@@ -1,10 +1,14 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship:
+
+class Ship(Sprite):
     """This class manages our fighter ship"""
 
     def __init__(self, aa_game):
         """Init the ship and set its starting position"""
+        super().__init__()
+
         self.moving_right = False
         self.moving_left = False
 
