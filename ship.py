@@ -9,7 +9,7 @@ class Ship:
         self.moving_left = False
 
         self.screen = aa_game.screen
-        self.settings = aa_game.settings
+        self.game_settings = aa_game.settings
         self.screen_rect = aa_game.screen.get_rect()
 
         # Load the ship image and get its rect
@@ -17,6 +17,11 @@ class Ship:
         self.rect = self.image.get_rect()
 
         # Starting ship at bottom center of screen
+        self.center_ship()
+
+
+    def center_ship(self):
+        """Center the ship on the screen"""
         self.rect.midbottom = self.screen_rect.midbottom
         self.ship_x = float(self.rect.x)
 
@@ -28,9 +33,9 @@ class Ship:
 
     def update(self ):
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.ship_x += self.settings.ship_speed
+            self.ship_x += self.game_settings.ship_speed
         if self.moving_left and self.rect.left > self.screen_rect.left:
-            self.ship_x -= self.settings.ship_speed
+            self.ship_x -= self.game_settings.ship_speed
 
         self.rect.x = int(self.ship_x)
 
